@@ -11,16 +11,37 @@ main <- function()
             "Select all the contacts files for the academic year.\n\n
 (Example: Academic year: Summer 2019 - Fall 2020)")
   
-  contacts_folder <- choose.dir();
-  evals_folder <- choose.dir();
+  contacts_folder <- tk_choose.dir();
+  evals_folder <- tk_choose.dir();
   
-  contacts_vector <- list.files(contacts_folder)
-  evals_vector <- list.files(evals_folder)
+  contacts_files <- list.files(contacts_folder)
+  evals_files <- list.files(evals_folder)
   
-  for (element in contacts_vector)
+  contacts_vector <- c();
+  evals_vector <- c();
+  
+  # I'm getting an error with a file(file, "rt") problem
+  
+  for (x in contacts_files)
   {
-    print(element)
+    data <- read.csv(file = x, stringsAsFactors = FALSE)
+    append(data, contacts_vector)    
   }
+  
+  for (x in evals_files)
+  {
+    data <- read.csv(file = x, stringsAsFactors = FALSE)
+    append(data, evals_vector)
+  }
+  
+  # Testing values
+  for (x in contacts_vector)
+    print(x)
+  
+  for (x in evals_vector)
+    print(x)
 }
+# pass by ref if possible, otherwise just return the vector
+
 
 main()
