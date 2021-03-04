@@ -23,24 +23,26 @@ main <- function()
   evals_files <<- tk_choose.files()
   
   # vectors that will store each file as a dataframe
-  contacts_vector <<- vector();
-  evals_vector <<- vector();
+  contacts <- vector("list", length = 3);
+  evals <- vector("list", length = 3);
   
-  # vectors are not receiving the data properly
+  # 
   for (i in 1:length(contacts_files))
   {
+    # read.csv creates a dataframe
     data <- read.csv(file = contacts_files[i], stringsAsFactors = FALSE)
-    contacts_vector[i] <- data;  
+    print(class(data))
+    contacts[[i]] <- data  
   }
   
   for (i in 1:length(evals_files))
   {
     data <- read.csv(file = evals_files[i], stringsAsFactors = FALSE)
-    evals_vector[i] <- data;
+    evals[[i]] <- data
   }
   
   # Test
-  for (x in contacts_vector)
+  "for (x in contacts_vector)
   {
     
   }
@@ -48,7 +50,8 @@ main <- function()
   for (x in evals_vector)
   {
 
-  }
+  }"
+  #
 }
 # pass by ref if possible, otherwise just return the vector
 
