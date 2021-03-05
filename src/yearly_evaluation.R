@@ -13,47 +13,29 @@ main <- function()
 (Example: Academic year: Summer 2019 - Fall 2020)")
   
   # vector that stores each contact file
-  contacts_files <<- tk_choose.files()
+  contacts_files <- tk_choose.files()
   
   winDialog(type = c("ok"),
             "Select the evaluations files for the academic year.\n\n
 (Example: Academic year: Summer 2019 - Fall 2020)")
   
   # vector that stores each eval file
-  evals_files <<- tk_choose.files()
+  evals_files <- tk_choose.files()
   
   # vectors that will store each file as a dataframe
   contacts <- vector("list", length = 3);
   evals <- vector("list", length = 3);
   
   # 
-  for (i in 1:length(contacts_files))
-  {
-    # read.csv creates a dataframe
-    data <- read.csv(file = contacts_files[i], stringsAsFactors = FALSE)
-    print(class(data))
-    contacts[[i]] <- data  
-  }
+  contacts <- lapply(contacts_files, read.csv)
+  evals <- lapply(evals_files, read.csv)
   
-  for (i in 1:length(evals_files))
-  {
-    data <- read.csv(file = evals_files[i], stringsAsFactors = FALSE)
-    evals[[i]] <- data
-  }
+  # Just merge the contacts and evaluation files
+  # I feel like the data frames should have the same name for consistency
+  # But in the end, there should be one data frame for contacts and one data frame for evals
+  # Make sure that csv file formats match.
   
-  # Test
-  "for (x in contacts_vector)
-  {
-    
-  }
-
-  for (x in evals_vector)
-  {
-
-  }"
-  #
 }
-# pass by ref if possible, otherwise just return the vector
-
 
 main()
+
