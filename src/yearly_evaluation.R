@@ -31,7 +31,19 @@ main <- function()
   evals <- lapply(evals_files, read.csv)
   
   # Just merge the contacts and evaluation files
-  # I feel like the data frames should have the same name for consistency
+  for (entry in 1:length(contacts))
+  {
+    if(names(contacts[[1]]) != names(contacts[[entry]]))
+      stop("One of the contact files have different names, please correct the data")
+  }
+  # Foreach (data frame in contacts)
+    # check if the names match
+      # if they don't match
+        # throw exception error
+      # else
+        # merge the contacts together.
+  
+  # I feel like the data frames should have the same names for consistency
   # But in the end, there should be one data frame for contacts and one data frame for evals
   # Make sure that csv file formats match.
   
