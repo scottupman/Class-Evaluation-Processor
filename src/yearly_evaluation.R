@@ -1,5 +1,5 @@
 library(tcltk)
-library(purrr)
+library(dplyr)
 
 source("/Users/User/Desktop/Files/GitHub repositories/Class-Evaluation-Processor/src/helpers.R")
 source("/Users/User/Desktop/Files/GitHub repositories/Class-Evaluation-Processor/src/merger.R")
@@ -25,16 +25,20 @@ main <- function()
   evals_files <- tk_choose.files()
   
   # vectors that will store each file as a dataframe
-  contacts <- lapply(contacts_files, read.csv)
-  evals <- lapply(evals_files, read.csv)
+  contacts <<- lapply(contacts_files, function(i)
+  {read.csv(i, stringsAsFactors = F, fileEncoding = "UTF-8-BOM")})
+
+  
+  evals <<- lapply(evals_files, function(i)
+  {read.csv(i, stringsAsFactors = F, fileEncoding = "UTF-8-BOM")})
   
   # Checks if each data sheet has the same column names.
-  check_lists(contacts, evals)
+  check_lists(contacts, evals) 
+  df1 <<- bind_rows(contacts, .id = NULL)
+  df2 <<- bind_rows(evals, .id = NULL)
   
   # Combine both the evaluation sheets and contact sheets.
   
-  
-
 }
 main()
 
