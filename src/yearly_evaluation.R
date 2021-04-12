@@ -51,7 +51,6 @@ YearEval <- R6Class("YearEval", public = list(
     merged_evals <- bind_rows(evals, .id = NULL)
     return(merged_evals)
   }
-
 ))
 
 # yearly_evals <- data.frame(matrix(ncol = 15))
