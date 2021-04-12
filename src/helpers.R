@@ -155,7 +155,7 @@ split.course.summary <- function(course.index, semester.summary) {
 create.export.ss <- function(reports.by.codes) {
   course.title <- names(reports.by.codes)[1]
   
-  # TODO: remove dependency on revieews.by.course.code
+  # TODO: remove dependency on reviews.by.course.code
   reviews <- reviews.by.course.code[course.title]
   reviews.by.section <-
     unlist(reviews)
