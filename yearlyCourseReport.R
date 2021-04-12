@@ -43,6 +43,8 @@ source("/Users/User/Desktop/Files/GitHub repositories/Class-Evaluation-Processor
 # student.contacts.filename <- file.choose()
 
 YearEval <- YearEval$new()
+ev <- YearEval$yearly_evals
+print(ev)
 #  read in the contact and distribution files
 evals <- YearEval$create_merged_evals()
 student.contacts <- YearEval$create_merged_contacts()
@@ -447,15 +449,15 @@ if (length(error.log) > 0) {
 }
 
 semester.summary <- create.semester.summary(reviewl)
-sci <-
+sci <- 
   which(lengths(lapply(1:length(semester.summary), function(x)
     unique(find.sections.by.course(x, semester.summary)))) > 1)
 
 sc <- semester.summary[sci]
-export.semester.summary(sc)
+# export.semester.summary(sc)
 
 semester.summary <- semester.summary[-sci]
-export.semester.summary(semester.summary)
+# export.semester.summary(semester.summary)
 
 if (num.ta.cols <= 0) {
   # winDialog(

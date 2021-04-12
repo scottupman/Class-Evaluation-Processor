@@ -13,9 +13,9 @@ YearEval <- R6Class("YearEval", public = list(
   
   initialize = function()
   {
-    colnames(yearly_evals) <- c("Course", "Question", "Poor", "Fair", "Good", "Very Good", "Excellent",
-                                "Total Responses", "Class size", "Semester", "Year", "Course Director",
-                                "Dep", "Rating", "Weighted Rating")
+    colnames(self$yearly_evals) <- c("Course", "Question", "Poor", "Fair", "Good", "Very Good", "Excellent",
+                                     "Total Responses", "Class size", "Semester", "Year", "Course Director",
+                                     "Dep", "Rating", "Weighted Rating")
   },
   
   create_merged_contacts = function() 
@@ -35,7 +35,6 @@ YearEval <- R6Class("YearEval", public = list(
     merged_contacts <- bind_rows(contacts, .id = NULL)
     return(merged_contacts)
     
-    
   },
   create_merged_evals = function()
   {
@@ -52,6 +51,7 @@ YearEval <- R6Class("YearEval", public = list(
     merged_evals <- bind_rows(evals, .id = NULL)
     return(merged_evals)
   }
+
 ))
 
 # yearly_evals <- data.frame(matrix(ncol = 15))
